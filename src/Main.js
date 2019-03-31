@@ -12,6 +12,8 @@ import Stock from './Stock/';
 import Crm from './Crm/';
 import OA from './OA/';
 
+import {refresh_token} from './services/Main';
+
 const { Content, Footer } = Layout;
 class Main extends PureComponent{
 	state = {
@@ -21,16 +23,22 @@ class Main extends PureComponent{
 		const { dispatch } = this.props;
 		dispatch(loadUserInfo());
 		dispatch(loadAppInfo());
+		this.interval = setInterval(() => {
+			refresh_token();
+		}, 600000);  
 	}
-	componentDidCatch(error, info) {
+	componentWillUnmount(){
+		clearInterval(this.interval);
+	}
+	/* componentDidCatch(error, info) {
 		this.setState({
 			hasError: true
 		})
-	}
+	} */
 	render(){
-		if(this.state.hasError){
+		/* if(this.state.hasError){
 			return (<Redirect to="/login"/>)
-		}
+		} */
 		const {menuCollapsed,menuItem,smallScreen} = this.props.app;
 		const asideProps = {menuCollapsed,menuItem}
 		return(

@@ -9,7 +9,7 @@ export async function login(userinfo){
 	return request('oauth/token?' + param ,{
 		method: 'post',
 		headers: new Headers({
-			"Authorization": "Basic ZXJwbmV4dC1mcm9udDplcnBuZXh0LXNlY3JldA=="
+			"Authorization": "Basic ZWFwLWZyb250OmVhcC1zZWNyZXQ="
 		})
 	});
 }

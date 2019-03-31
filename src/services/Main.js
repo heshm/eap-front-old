@@ -1,4 +1,4 @@
-import {request} from '../utils';
+import {request,storeLoginData} from '../utils';
 
 export async function fetchIndex(){
 	const {success} = await request('/api',{
@@ -45,4 +45,13 @@ export async function fetchAppInfo(){
 			}
 		})
 	})
+}
+
+export async function refresh_token(){
+	const refresh_token = localStorage.getItem('refresh_token');
+	
+	const {data} = await request(`oauth/token?grant_type=refresh_token&refresh_token=${refresh_token}`,{
+		method: 'post'
+	});
+	storeLoginData(data);
 }
