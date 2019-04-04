@@ -25,7 +25,7 @@ class Main extends PureComponent{
 		dispatch(loadAppInfo());
 		this.interval = setInterval(() => {
 			refresh_token();
-		}, 600000);  
+		}, 6000);  
 	}
 	componentWillUnmount(){
 		clearInterval(this.interval);
