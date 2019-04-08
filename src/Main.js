@@ -23,9 +23,9 @@ class Main extends PureComponent{
 		const { dispatch } = this.props;
 		dispatch(loadUserInfo());
 		dispatch(loadAppInfo());
-		this.interval = setInterval(() => {
+		/* this.interval = setInterval(() => {
 			refresh_token();
-		}, 6000);  
+		}, 6000);   */
 	}
 	componentWillUnmount(){
 		clearInterval(this.interval);
